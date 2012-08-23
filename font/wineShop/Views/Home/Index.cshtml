@@ -1,21 +1,45 @@
-﻿@{
+﻿@model IEnumerable<wineShop.Models.Produto>
+@{
     ViewBag.Title = "Home";
 }
 @section featured {
-    <section class="featured">
+    <div class="featured">
         <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>@ViewBag.Title.</h1>
-                <h2>@ViewBag.Message</h2>
-            </hgroup>
+            <h1 class="title">@ViewBag.Title - @ViewBag.Message</h1>
             <p>
                 A sua melhor opção para compras de vinhos.
             </p>
         </div>
-    </section>
+    </div>
 }
-<h3>Destaques:</h3>
-<ol class="round">
+<h3>
+    Destaques:</h3>
+<table>
+    @if (Model != null)
+    {
+        foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.ActionLink("Carrinho", "View", new { id = item.IdProduto })
+            </td>
+        </tr>
+        }
+    }
+</table>
+@*<ol class="round">
     <li class="one">
         <h5>Casillero del Diablo</h5>
         Casillero del Diablo - Carmenere.
@@ -27,4 +51,4 @@
         Concha y Toro - Cabernet Sauvignon.
         <img alt="Concha y Toro - Cabernet Sauvignon" src="../../Images/produtos/casillero_carmenere.jpg" />
     </li>
-</ol>
+</ol>*@ 
