@@ -34,24 +34,4 @@ namespace wineShop.Models
         public decimal Preco { get; set; }
     }
 
-    /*public class ProdutoModel
-    {
-        [Required]
-        [Display(Name = "Nome do Produto")]
-        public string Nome { get; set; }
-
-        [Required]
-        [Display(Name = "Nome do Produto")]
-        public string Descricao { get; set; }
-
-        [Required]
-        [Display(Name = "Nome do Produto")]
-        public string Fabricante { get; set; }
-
-        [Required]
-        [DataType(DataType.Currency)]
-        [Display(Name = "Preço")]
-        public decimal Preco { get; set; }
-    }*/
-
 }
