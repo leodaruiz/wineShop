@@ -33,7 +33,7 @@
                 @Html.DisplayFor(modelItem => item.Preco)
             </td>
             <td>
-                @Html.ActionLink("Carrinho", "View", new { id = item.IdProduto })
+                @Html.ActionLink("Ver Detalhes", "Detalhes", new { id = item.IdProduto })
             </td>
         </tr>
         }

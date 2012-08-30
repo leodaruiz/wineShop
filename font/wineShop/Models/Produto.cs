@@ -9,16 +9,6 @@ using System.Web.Security;
 
 namespace wineShop.Models
 {
-    public class ProdutosDBContext : DbContext
-    {
-        public ProdutosDBContext()
-            : base("DefaultConnection")
-        {
-        }
-
-        public DbSet<Produto> Produtos { get; set; }
-    }
-
     [Table("Produto")]
     public class Produto
     {
@@ -28,9 +18,11 @@ namespace wineShop.Models
         [Required]
         [Display(Name = "Nome do Produto")]
         public string Nome { get; set; }
+        [Display(Name = "Descrição")]
         public string Descricao { get; set; }
         public string Fabricante { get; set; }
         public string Categoria { get; set; }
+        [Display(Name = "Preço")]
         public decimal Preco { get; set; }
     }
 

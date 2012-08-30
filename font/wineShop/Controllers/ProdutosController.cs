@@ -11,7 +11,7 @@ namespace wineShop.Controllers
 {
     public class ProdutosController : Controller
     {
-        private ProdutosDBContext db = new ProdutosDBContext();
+        private MainContext db = new MainContext();
 
         //
         // GET: /Produtos/

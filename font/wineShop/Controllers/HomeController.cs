@@ -9,13 +9,25 @@ namespace wineShop.Controllers
 {
     public class HomeController : Controller
     {
-        private ProdutosDBContext db = new ProdutosDBContext();
+        private MainContext db = new MainContext();
+
+        public ActionResult Detalhes(int id)
+        {
+            Produto produto = db.Produtos.Find(id);
+            if (produto == null)
+            {
+                return HttpNotFound();
+            }
+            return View(produto);
+        }
 
         public ActionResult Index()
         {
             ViewBag.Message = "Sejam bem-vindos!";
+            Carrinho c = CarrinhoHelper.GetCarrinho(this.HttpContext);
+            if (c.ItensCarrinho.Count > 0)
+                ViewBag.MenuCarrinho = string.Format("Carrinho ({0})", c.ItensCarrinho.Count);
 
-            //return View();
             return View(db.Produtos.ToList());
         }
 

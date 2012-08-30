@@ -1,0 +1,39 @@
+﻿@model wineShop.Models.Carrinho
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Carrinho</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Produto.Nome)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Produto.Nome)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Count)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Count)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DataInclusao)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DataInclusao)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

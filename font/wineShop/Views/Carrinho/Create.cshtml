@@ -1,0 +1,51 @@
+﻿@model wineShop.Models.Carrinho
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Carrinho</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.IdProduto, "Produto")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("IdProduto", String.Empty)
+            @Html.ValidationMessageFor(model => model.IdProduto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Count)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Count)
+            @Html.ValidationMessageFor(model => model.Count)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DataInclusao)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DataInclusao)
+            @Html.ValidationMessageFor(model => model.DataInclusao)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
