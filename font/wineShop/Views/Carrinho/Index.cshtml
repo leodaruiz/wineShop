@@ -1,45 +1,70 @@
-﻿@model IEnumerable<wineShop.Models.Carrinho>
-
+﻿@model wineShop.Models.Carrinho
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>
+    Carrinho de Compras</h2>
+<h3>
+    Quantidade: @Html.DisplayText(Convert.ToString(Model.ItensCarrinho.Sum(x => x.Quantidade)))</h3>
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Produto.Nome)
+        <th style="width: 40%">
+            Nome
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count)
+        <th style="width: 30%">
+            Preço
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataInclusao)
+        <th style="width: 30%">
+            Quantidade
         </th>
-        <th></th>
+        <th style="width: 30%">
+            Valor
+        </th>
     </tr>
-
-@foreach (var item in Model) {
+    @{
+        decimal valorTotal = 0;
+    }
+    @foreach (var item in (List<wineShop.Models.Produto>)ViewBag.ProdutosCarrinho)
+    {
+        {
+            valorTotal += (Model.ItensCarrinho.FirstOrDefault(x => x.IdProduto == item.IdProduto).Quantidade * item.Preco);
+        }
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @String.Format("{0:c}", item.Preco)
+            </td>
+            <td>
+                @String.Format("{0:0.00}", Model.ItensCarrinho.FirstOrDefault(x => x.IdProduto == item.IdProduto).Quantidade)
+            </td>
+            <td>
+                @String.Format("{0:c}", (Model.ItensCarrinho.FirstOrDefault(x => x.IdProduto == item.IdProduto).Quantidade * item.Preco))
+            </td>
+        </tr>
+    }
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Produto.Nome)
+        <td colspan="3" align="right">
+            Total
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataInclusao)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdCarrinho }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdCarrinho }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdCarrinho })
+        <td>@String.Format("{0:c}", valorTotal)
         </td>
     </tr>
-}
-
 </table>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.NomeComprador)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NomeComprador)
+            @Html.ValidationMessageFor(model => model.NomeComprador)
+        </div>
+        <p>
+            <input type="submit" value="Finalizar Compra" />
+        </p>
+    </fieldset>
+}

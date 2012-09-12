@@ -11,5 +11,6 @@ namespace wineShop.Models
         public MainContext() : base("DefaultConnection") { }
 
         public DbSet<Produto> Produtos { get; set; }
+        public DbSet<Carrinho> Carrinhos { get; set; }
     }
 }

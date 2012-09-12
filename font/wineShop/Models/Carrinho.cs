@@ -8,7 +8,8 @@ namespace wineShop.Models
 {
     public class ItemCarrinho
     {
-        public int IdCarrinho { get; set; }
+        [Key]
+        public int IdItemCarrinho { get; set; }
         public int IdProduto { get; set; }
         public int Quantidade { get; set; }
         public System.DateTime DataInclusao { get; set; }
@@ -63,6 +64,12 @@ namespace wineShop.Models
 
     public class Carrinho
     {
+        [Key]
+        public int IdCarrinho { get; set; }
+
+        [Display(Name = "Nome Completo")]
+        public string NomeComprador { get; set; }
+
         public List<ItemCarrinho> ItensCarrinho { get; set; }
 
         public Carrinho()
