@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!--This file represents the results of running a test suite-->
+<test-results name="C:\projetos\wineShop\font\wineShop\UnitTests.nunit" total="2" errors="0" failures="0" not-run="0" inconclusive="0" ignored="0" skipped="0" invalid="0" date="2012-09-12" time="18:37:37">
+  <environment nunit-version="2.6.1.12217" clr-version="2.0.50727.5456" os-version="Microsoft Windows NT 6.1.7601 Service Pack 1" platform="Win32NT" cwd="C:\Program Files\NUnit 2.6.1\bin" machine-name="DEH-PC" user="Deh" user-domain="Deh-PC" />
+  <culture-info current-culture="en-US" current-uiculture="pt-BR" />
+  <test-suite type="Project" name="C:\projetos\wineShop\font\wineShop\UnitTests.nunit" executed="True" result="Success" success="True" time="11.219" asserts="0">
+    <results>
+      <test-suite type="Assembly" name="C:\projetos\wineShop\font\wineShop\bin\wineShop.dll" executed="True" result="Success" success="True" time="11.202" asserts="0">
+        <results>
+          <test-suite type="Namespace" name="wineShop" executed="True" result="Success" success="True" time="11.198" asserts="0">
+            <results>
+              <test-suite type="Namespace" name="Tests" executed="True" result="Success" success="True" time="11.185" asserts="0">
+                <results>
+                  <test-suite type="TestFixture" name="DbContextTest" executed="True" result="Success" success="True" time="11.179" asserts="0">
+                    <results>
+                      <test-case name="wineShop.Tests.DbContextTest.IncluirProdutoOK" executed="True" result="Success" success="True" time="11.026" asserts="2" />
+                      <test-case name="wineShop.Tests.DbContextTest.IncluirProdutoSemNome" executed="True" result="Success" success="True" time="0.121" asserts="2" />
+                    </results>
+                  </test-suite>
+                </results>
+              </test-suite>
+            </results>
+          </test-suite>
+        </results>
+      </test-suite>
+    </results>
+  </test-suite>
+</test-results>

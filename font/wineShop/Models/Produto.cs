@@ -15,7 +15,7 @@ namespace wineShop.Models
         [Key]
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int IdProduto { get; set; }
-        [Required]
+        [Required(ErrorMessage="Nome Obrigatório")]
         [Display(Name = "Nome do Produto")]
         public string Nome { get; set; }
         [Display(Name = "Descrição")]
