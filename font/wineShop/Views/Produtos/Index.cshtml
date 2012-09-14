@@ -1,14 +1,19 @@
 ﻿@model IEnumerable<wineShop.Models.Produto>
-
 @{
     ViewBag.Title = "Index";
 }
-
-<h2>Index</h2>
-
+<h2>
+    Produtos</h2>
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+@{
+    if (ViewBag.MensagemSucesso != null)
+    {
+    <h3 style="color: Red">@Convert.ToString(ViewBag.MensagemSucesso)</h3>
+    <br />
+    }
+}
 <table>
     <tr>
         <th>
@@ -23,29 +28,29 @@
         <th>
             @Html.DisplayNameFor(model => model.Preco)
         </th>
-        <th></th>
+        <th>
+        </th>
     </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fabricante)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Preco)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.IdProduto }) |
-            @Html.ActionLink("Details", "Details", new { id=item.IdProduto }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.IdProduto })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Fabricante)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Preco)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.IdProduto }) |
+                @Html.ActionLink("Details", "Details", new { id = item.IdProduto }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.IdProduto })
+            </td>
+        </tr>
+    }
 </table>

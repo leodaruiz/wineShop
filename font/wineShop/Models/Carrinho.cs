@@ -17,6 +17,12 @@ namespace wineShop.Models
 
     public static class CarrinhoHelper
     {
+        public static void LimparCarrinho(HttpContextBase context)
+        {
+            if (context.Session["Carrinho"] != null)
+                context.Session.Add("Carrinho", null);
+        }
+
         public static Carrinho GetCarrinho(HttpContextBase context)
         {
             Carrinho carrinho;
@@ -67,7 +73,7 @@ namespace wineShop.Models
         [Key]
         public int IdCarrinho { get; set; }
 
-        [Display(Name = "Nome Completo")]
+        [Required, Display(Name = "Nome Completo")]
         public string NomeComprador { get; set; }
 
         public List<ItemCarrinho> ItensCarrinho { get; set; }

@@ -25,7 +25,7 @@ namespace wineShop.Migrations
                 c => new
                     {
                         IdCarrinho = c.Int(nullable: false, identity: true),
-                        NomeComprador = c.String(),
+                        NomeComprador = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.IdCarrinho);
             

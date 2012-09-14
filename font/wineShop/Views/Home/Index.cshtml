@@ -12,30 +12,35 @@
         </div>
     </div>
 }
-<h3>
-    Destaques:</h3>
-<table>
-    @if (Model != null)
-    {
-        foreach (var item in Model)
+@if (Model != null && Model.Count() > 0)
+{
+    <h3>
+        Destaques:</h3>
+    <table>
+        @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Descricao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fabricante)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Preco)
-            </td>
-            <td>
-                @Html.ActionLink("Ver Detalhes", "Detalhes", new { id = item.IdProduto })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Descricao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fabricante)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Preco)
+                </td>
+                <td>
+                    @Html.ActionLink("Ver Detalhes", "Detalhes", new { id = item.IdProduto })
+                </td>
+            </tr>
         }
-    }
-</table>
+    </table>
+}
+else
+{
+    <h3>
+        Nenhum produto cadastrado</h3>
+}

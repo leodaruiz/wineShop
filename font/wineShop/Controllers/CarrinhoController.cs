@@ -19,16 +19,19 @@ namespace wineShop.Controllers
         public ActionResult Index()
         {
             var carrinho = CarrinhoHelper.GetCarrinho(this.HttpContext);
+            ViewBag.ProdutosCarrinho = getProdutos(carrinho);
+            return View(carrinho);
+        }
+
+        private List<Produto> getProdutos(Carrinho carrinho)
+        {
             List<Produto> produtos = new List<Produto>();
             foreach (var item in carrinho.ItensCarrinho)
             {
                 Produto produto = db.Produtos.FirstOrDefault(p => p.IdProduto == item.IdProduto);
                 produtos.Add(produto);
             }
-
-
-            ViewBag.ProdutosCarrinho = produtos;
-            return View(carrinho);
+            return produtos;
         }
 
         public ActionResult Add(int id)
@@ -46,16 +49,18 @@ namespace wineShop.Controllers
         public ActionResult Index(Carrinho c)
         {
             var carrinho = CarrinhoHelper.GetCarrinho(this.HttpContext);
+            ViewBag.ProdutosCarrinho = getProdutos(carrinho);
             carrinho.NomeComprador = c.NomeComprador;
             if (ModelState.IsValid)
             {
                 db.Carrinhos.Add(carrinho);
                 db.SaveChanges();
-                return RedirectToAction("Index", "Home");
-            }
+                CarrinhoHelper.LimparCarrinho(this.HttpContext);
 
-            // Go back to the main store page for more shopping
-            return RedirectToAction("Index", "Home");
+                ViewBag.Sucesso = true;
+                
+            }
+            return View(carrinho);
         }
 
         protected override void Dispose(bool disposing)

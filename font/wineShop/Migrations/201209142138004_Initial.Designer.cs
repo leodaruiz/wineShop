@@ -11,7 +11,7 @@ namespace wineShop.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201209120429425_Initial"; }
+            get { return "201209142138004_Initial"; }
         }
         
         string IMigrationMetadata.Source

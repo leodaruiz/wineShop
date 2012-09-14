@@ -21,6 +21,12 @@ namespace wineShop.Controllers
             return View(db.Produtos.ToList());
         }
 
+        public ActionResult Sucesso()
+        {
+            ViewBag.MensagemSucesso = "Produto Cadastrado com Sucesso";
+            return View("Index", db.Produtos.ToList());
+        }
+
         //
         // GET: /Produtos/Details/5
 
@@ -52,7 +58,7 @@ namespace wineShop.Controllers
             {
                 db.Produtos.Add(produto);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Sucesso");
             }
 
             return View(produto);
@@ -81,7 +87,7 @@ namespace wineShop.Controllers
             {
                 db.Entry(produto).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Sucesso");
             }
             return View(produto);
         }

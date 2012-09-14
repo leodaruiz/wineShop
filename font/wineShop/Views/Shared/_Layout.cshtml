@@ -23,10 +23,11 @@
                             <li>@Html.ActionLink("Home", "Index", "Home")</li>
                             <li>@Html.ActionLink("Produtos", "Index", "Produtos")</li>
                             
-                            @if (ViewBag.MenuCarrinho != null)
+                            @if (ViewBag.MenuCarrinho == null)
                             {
-                            <li>@Html.ActionLink((string)ViewBag.MenuCarrinho, "Index", "Carrinho")</li>
+                                ViewBag.MenuCarrinho = "Carrinho";
                             }
+                            <li>@Html.ActionLink((string)ViewBag.MenuCarrinho, "Index", "Carrinho")</li>
                             <li>@Html.ActionLink("About", "About", "Home")</li>
                             <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                         </ul>
