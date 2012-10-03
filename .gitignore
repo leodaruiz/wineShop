@@ -152,6 +152,7 @@ pip-log.txt
 # Unit test / coverage reports
 .coverage
 .tox
+*TestResult.xml
 
 #Translations
 *.mo
